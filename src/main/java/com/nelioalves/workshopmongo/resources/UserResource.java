@@ -29,7 +29,6 @@ public class UserResource {
 		List<User> list = service.findAll();
 		List<UserDTO> listDto = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDto);
-		
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
@@ -51,7 +50,7 @@ public class UserResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();	
 	}
-
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody UserDTO objDto, @PathVariable String id) {
 		User obj = service.FromDTO(objDto);
